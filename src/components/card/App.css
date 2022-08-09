@@ -17,3 +17,18 @@
 .card p{
   margin: 0 0 10px;
 }
+@media screen and (max-width:500px) {
+  .card{
+padding-bottom: 50px;
+
+  grid-template-columns: repeat(1,1fr);
+}
+.card{
+  min-width:330px ;
+  width: 87%;
+  margin: 0 auto;
+}
+.card  p{
+  line-break: anywhere;
+}
+}
