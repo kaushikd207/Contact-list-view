@@ -72,11 +72,11 @@ export default function Form({
         minLength={10}
         required
         name='phone'
-        placeholder='Phonenumber'
+        placeholder='Mobile Number'
       />
       <select value={status} onChange={handleChange} name='status'>
-        <option value='active'>Active</option>
-        <option value='inactive'>InActive</option>
+        <option value='Active'>Active</option>
+        <option value='Inactive'>InActive</option>
       </select>
       <button type='submit'>{isUpdate ? 'Update' : 'Submit'}</button>
     </form>
