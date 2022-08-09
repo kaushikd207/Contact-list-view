@@ -3,7 +3,7 @@ import Form from './components/form'
 import Nav from './components/nav'
 import toast from 'react-hot-toast'
 import Card from './components/card'
-
+import './App.css'
 function App() {
   const [addForm, setAddForm] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
@@ -40,11 +40,11 @@ function App() {
   return (
     <div>
       <Nav />
-      <button onClick={() => setAddForm((prev) => !prev)}>
+      <button className="btn" onClick={() => setAddForm((prev) => !prev)}>
         {addForm ? 'hide' : 'Add Contact'}
       </button>
       {addForm && (
-        <Form
+        <Form className="addForm"
           contactList={contactList}
           fetchData={fetchData}
           setAddForm={setAddForm}

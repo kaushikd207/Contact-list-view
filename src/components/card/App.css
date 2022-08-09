@@ -1,0 +1,19 @@
+.card{
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  box-shadow: 2px 3px 19px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 2%;
+}
+.card > div{
+  text-align: left;
+}
+.card p{
+  margin: 0 0 10px;
+}

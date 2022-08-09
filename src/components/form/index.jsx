@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-
+import '../form/Form.css'
 export default function Form({
   data,
   setData,
