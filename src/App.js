@@ -34,7 +34,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, [])
 
   return (
@@ -54,7 +54,7 @@ function App() {
           setIsUpdate={setIsUpdate}
         />
       )}
-      {(contactList.length !== null) && (
+      {(contactList !== null) && (
         <>
           <h2>List of Contacts</h2>
           {contactList
