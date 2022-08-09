@@ -54,7 +54,7 @@ function App() {
           setIsUpdate={setIsUpdate}
         />
       )}
-      {(contactList > 0) && (
+      {(contactList.length > 0) && (
         <>
           <h2>List of Contacts</h2>
           {contactList
