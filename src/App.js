@@ -55,7 +55,7 @@ function App() {
         />
       )}
 
-      {(contactList !== null || contactList.length > 0) && (
+      {(contactList.length > 0 || contactList == null || contactList.length == null) && (
         <>
           <h2>List of Contacts</h2>
           {contactList
