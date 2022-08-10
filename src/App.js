@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   const [addForm, setAddForm] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
-  const [contactList, setContactList] = useState(null)
+  const [contactList, setContactList] = useState([])
   const [data, setData] = useState({
     fullname: '',
     email: '',
@@ -16,8 +16,13 @@ function App() {
   })
 
   const fetchData = () => {
-    const conatactData = JSON.parse(localStorage.getItem('data'))
-    if (data) setContactList(conatactData)
+    const contactData = JSON.parse(localStorage.getItem('data'))
+    if (contactData?.length) {
+      setContactList(contactData)
+    }
+    else{
+      setContactList([])
+    }
   }
 
   const handleDelete = (timestamp) => {
@@ -54,6 +59,7 @@ function App() {
           setIsUpdate={setIsUpdate}
         />
       )}
+      {console.log(contactList)}
 
       {contactList && (
         <>
