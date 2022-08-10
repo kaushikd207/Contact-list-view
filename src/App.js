@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   const [addForm, setAddForm] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
-  const [contactList, setContactList] = useState([])
+  const [contactList, setContactList] = useState(null)
   const [data, setData] = useState({
     fullname: '',
     email: '',
@@ -55,7 +55,7 @@ function App() {
         />
       )}
 
-      {(contactList.length > 0 || contactList == null || contactList.length == null) && (
+      {contactList && (
         <>
           <h2>List of Contacts</h2>
           {contactList
