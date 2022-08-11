@@ -94,7 +94,6 @@ function App() {
         <> {!addForm && (<DeleteAll fetchData={fetchData}></DeleteAll>)}
 
           <h2>List of Contacts</h2>
-
           <div className="searchBox">   <input
             name='cName'
             type='text'
@@ -102,6 +101,20 @@ function App() {
             onChange={(e) => setInput(e.target.value)}
             placeholder='Search By First Name'
           /></div>
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+       
+
+         <tbody>
           {search(contactList)
             .sort((a, b) => b.timestamp - a.timestamp)
             .map((item, i) => (
@@ -113,8 +126,8 @@ function App() {
               />
 
             ))}
-     
-
+            </tbody>
+          </table>
         </>
       )
       }

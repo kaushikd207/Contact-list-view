@@ -1,4 +1,4 @@
-.card {
+/* .card {
   align-items: center;
   gap: 20px;
   padding: 10px;
@@ -11,7 +11,7 @@
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 2%;
-}
+} */
 
 /* table {
   width: 90%;
@@ -46,15 +46,34 @@ th, td {
   
 } */
 
-.card>div {
+/* .card>div {
   text-align: left;
 }
 
 .card p {
   margin: 0 0 10px;
+} */
+.btnWrapper {
+  display: flex;
+  justify-content: center;
 }
 
-@media screen and (max-width:500px) {
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+button:nth-child(2) {
+  color: rgb(193, 0, 0);
+}
+
+button:nth-child(1) {
+  color: rgb(0, 150, 40);
+}
+
+/* @media screen and (max-width:500px) {
   .card {
     padding-bottom: 50px;
 
@@ -70,4 +89,4 @@ th, td {
   .card p {
     line-break: anywhere;
   }
-}
+} */
