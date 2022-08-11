@@ -10,7 +10,7 @@ export default function Form({
   isUpdate,
   setIsUpdate,
 }) {
-  const { fullname, email, phone, status } = data
+  const { FirstName,LastName, email, phone, status } = data
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -19,7 +19,7 @@ export default function Form({
       [name]: value,
     }))
   }
-
+//To store the data in a local storage and sort by time 
   const handleSubmit = (e) => {
     e.preventDefault()
     let newData
@@ -28,17 +28,18 @@ export default function Form({
         ...contactList.filter((item) => item.timestamp !== data.timestamp),
         { ...data, timestamp: Date.now() },
       ]
-      toast.success(fullname + ' Updated Successfully')
+      toast.success(FirstName + ' Updated Successfully')
       setIsUpdate(false)
     } else {
       newData = [...contactList, { ...data, timestamp: Date.now() }]
-      toast.success(fullname + ' Added Successfully')
+      toast.success(FirstName + ' Added Successfully')
     }
 
     localStorage.setItem('data', JSON.stringify(newData))
     setAddForm(false)
     setData({
-      fullname: '',
+      FirstName: '',
+      LastName: '',
       email: '',
       phone: '',
       status: 'active',
@@ -50,11 +51,19 @@ export default function Form({
     <form onSubmit={handleSubmit}>
       <input
         type='text'
-        value={fullname}
+        value={FirstName}
         onChange={handleChange}
-        name='fullname'
+        name='FirstName'
         required
-        placeholder='Name'
+        placeholder='First Name'
+      />
+          <input
+        type='text'
+        value={LastName}
+        onChange={handleChange}
+        name='LastName'
+        required
+        placeholder='Last Name'
       />
       <input
         type='email'

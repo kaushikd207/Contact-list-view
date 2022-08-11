@@ -1,13 +1,16 @@
 import React from 'react'
 
-function DeleteAll({fetchData}) {
+function DeleteAll({ fetchData }) {
     const handleDelete = () => {
-        alert('Are You sure?')
-        localStorage.clear()
-        fetchData()
+        if (window.confirm('Are you sure you wish to delete all this item?')) {
+            localStorage.clear()
+            fetchData()
+        } else {
+            return
+        }
     }
     return (
-       <> <button onClick={handleDelete}>Delete All</button></>
+        <> <button onClick={handleDelete}>Delete All</button></>
     )
 }
 

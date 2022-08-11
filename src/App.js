@@ -4,18 +4,22 @@ import Nav from './components/nav'
 import toast from 'react-hot-toast'
 import Card from './components/card'
 import DeleteAll from './components/DeleteAll'
+
 import './App.css'
 function App() {
   const [addForm, setAddForm] = useState(false)
   const [isUpdate, setIsUpdate] = useState(false)
   const [contactList, setContactList] = useState([])
-  // const [searchString, setSearchString] = useState('')
+  const [input, setInput] = useState('')
   const [data, setData] = useState({
-    fullname: '',
+    FirstName: '',
+    LastName: '',
     email: '',
     phone: '',
     status: 'active',
   })
+
+
 
   const fetchData = () => {
     const contactData = JSON.parse(localStorage.getItem('data'))
@@ -28,30 +32,47 @@ function App() {
   }
 
   const handleDelete = (timestamp) => {
-    alert('Are You sure?')
-    const newData = contactList.filter((item) => item.timestamp !== timestamp)
-    localStorage.setItem('data', JSON.stringify(newData))
-    toast.success('Deleted Successfully')
-    fetchData()
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      const newData = contactList.filter((item) => item.timestamp !== timestamp)
+      localStorage.setItem('data', JSON.stringify(newData))
+      toast.success('Deleted Successfully')
+      fetchData()
+    }
+    else {
+      return;
+
+    }
+
+
   }
 
   const handleUpdate = (olddata) => {
-    alert('Are You Sure?')
-    setIsUpdate(true)
-    setAddForm(true)
-    setData(olddata)
+    if (window.confirm('Are you sure you wish to edit this item?')) {
+      setIsUpdate(true)
+      setAddForm(true)
+      setData(olddata)
+    } else {
+      return
+    }
+
   }
 
   useEffect(() => {
     fetchData();
   }, [])
 
-  // const handleSearch = () => {
-  
-  // }
+
+  //search by name 
+
+  const search = (data) => {
+    return data.filter((item) => item.FirstName.toLowerCase().includes(input))
+  }
+
+
 
   return (
     <div>
+
       <Nav />
       <button className="btn" onClick={() => setAddForm((prev) => !prev)}>
         {addForm ? 'hide' : 'Add Contact'}
@@ -70,17 +91,18 @@ function App() {
       )}
 
       {contactList && (
-        <><DeleteAll fetchData={fetchData}></DeleteAll>
-          {/* <div>   <input
+        <> {!addForm && (<DeleteAll fetchData={fetchData}></DeleteAll>)}
+
+          <h2>List of Contacts</h2>
+
+          <div className="searchBox">   <input
             name='cName'
             type='text'
-            value={searchString}
-            onChange={(e) => setSearchString(e.target.value.toLowerCase())}
-            onFocus={handleSearch}
-            placeholder='Enter Name'
-          /></div> */}
-          <h2>List of Contacts</h2>
-          {contactList
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder='Search By First Name'
+          /></div>
+          {search(contactList)
             .sort((a, b) => b.timestamp - a.timestamp)
             .map((item, i) => (
               <Card
@@ -89,7 +111,10 @@ function App() {
                 item={item}
                 handleUpdate={handleUpdate}
               />
+
             ))}
+     
+
         </>
       )
       }
